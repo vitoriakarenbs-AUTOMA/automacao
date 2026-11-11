@@ -1,0 +1,17 @@
+[Unit]
+Description=Sistema Santos Lourenço Advogados - backend (FastAPI)
+After=network.target
+
+[Service]
+Type=simple
+User=slsistema
+Group=slsistema
+WorkingDirectory=/opt/santoslourenco/SISTEMA/backend
+Environment="PATH=/opt/santoslourenco/venv/bin:/usr/bin:/bin"
+Environment="SL_CONFIG_ENV=/opt/santoslourenco/config/.env"
+ExecStart=/opt/santoslourenco/venv/bin/uvicorn app.main_vps:app --host 127.0.0.1 --port 8000 --workers 1
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
